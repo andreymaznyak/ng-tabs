@@ -8,6 +8,7 @@ import { Component, ChangeDetectorRef, ElementRef } from '@angular/core';
 export class AppComponent {
   title = 'app';
   visible = false;
+  // numbers = Array(200).fill(0).map((x, i) => i); // Тестирование на множестве элементов
   tabs = [{
     title: `
       Dynamic 1
@@ -19,7 +20,7 @@ export class AppComponent {
   }];
   constructor(
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   toggle() {
     this.visible = !this.visible;

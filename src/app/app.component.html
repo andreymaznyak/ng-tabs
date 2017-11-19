@@ -1,4 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<p>
+  <span *ifViewportSize="'small'"> small </span>
+  <span *ifViewportSize="'medium'"> medium </span>
+  <span *ifViewportSize="'large'"> large </span>
+</p>
+<ng-container *ngFor="let number of numbers">
+  <button (click)="toggle()" *ifViewportSize="'small'">
+    Toggle 3 tab
+  </button>
+</ng-container>
 <button (click)="toggle()">
   Toggle 3 tab
 </button>
@@ -31,14 +41,6 @@
       <img src="http://lorempixel.com/600/400/people/">
     </tab-content>
   </tab>
-  <tab *ngFor="let tab of tabs">
-    <tab-title>
-      <div [innerHtml]="tab.title"></div>
-    </tab-title>
-    <tab-content>
-      <div [innerHtml]="tab.content"></div>
-    </tab-content>
-  </tab>
   <tab *ngIf="visible">
     <tab-title>
       Tab 3
@@ -50,4 +52,13 @@
       <img src="http://lorempixel.com/600/400/food/">
     </tab-content>
   </tab>
+  <tab *ngFor="let tab of tabs">
+    <tab-title>
+      <div [innerHtml]="tab.title"></div>
+    </tab-title>
+    <tab-content>
+      <div [innerHtml]="tab.content"></div>
+    </tab-content>
+  </tab>
+
 </tabs>
