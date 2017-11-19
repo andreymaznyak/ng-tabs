@@ -1,4 +1,4 @@
-<div class="title-container" (click)="titleClickHandler()">
+<div [ngClass]="{'active': tabIsActive}" class="title-container" (click)="titleClickHandler()">
     <ng-content></ng-content>
 </div>
 

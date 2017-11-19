@@ -1,32 +1,53 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<button (click)="visible = !visible">
+<button (click)="toggle()">
   Toggle 3 tab
 </button>
-
+<button (click)="addTab()">
+  Add tab
+</button>
+<button (click)="removeTab()">
+  Remove tab
+</button>
 <tabs>
   <tab>
     <tab-title>
-      <span>123</span>Title 1
+      <span>Tab</span> 1
     </tab-title>
     <tab-content>
-      <i>Content</i> 1
+      <p>
+        <i>Content city</i> 1
+      </p>
+      <img src="http://lorempixel.com/600/400/city/">
     </tab-content>
   </tab>
   <tab>
     <tab-title>
-      <i>Title</i> 2
+      <i>Tab</i> 2
     </tab-title>
     <tab-content>
-      Content 2
+      <p>
+        Content people 2
+      </p>
+      <img src="http://lorempixel.com/600/400/people/">
+    </tab-content>
+  </tab>
+  <tab *ngFor="let tab of tabs">
+    <tab-title>
+      <div [innerHtml]="tab.title"></div>
+    </tab-title>
+    <tab-content>
+      <div [innerHtml]="tab.content"></div>
     </tab-content>
   </tab>
   <tab *ngIf="visible">
     <tab-title>
-      Title 3
+      Tab 3
     </tab-title>
     <tab-content>
-      Content 3
+      <p>
+        Content food 3
+      </p>
+      <img src="http://lorempixel.com/600/400/food/">
     </tab-content>
   </tab>
 </tabs>
-

@@ -7,12 +7,12 @@ import { TabTitleComponent } from './tab-title/tab-title.component';
   templateUrl: './tab.component.html',
   styleUrls: ['./tab.component.scss']
 })
-export class TabComponent implements OnInit, OnDestroy, AfterContentInit, OnChanges {
+export class TabComponent implements OnDestroy, AfterContentInit {
   private _isActive = false;
   @Input() set isActive(val) {
-    console.log('set is active', val);
     this._isActive = val;
-    this.ngOnChanges();
+    this.initContent();
+    this.initTitle();
   }
   get isActive() {
     return this._isActive;
@@ -22,37 +22,24 @@ export class TabComponent implements OnInit, OnDestroy, AfterContentInit, OnChan
   @ContentChildren(TabContentComponent) content: QueryList<TabContentComponent>;
   @ContentChildren(TabTitleComponent) title: QueryList<TabTitleComponent>;
 
-  constructor() { }
-
-  ngOnInit() {
-    // register new tab
-  }
-
-  ngOnChanges() {
-    console.log('on changes inputs', this.isActive);
-    this.initContent();
-  }
-
-  onTitleClick() {
-    console.log('this on title click', this);
-    this.onActivateTab.emit(this);
-  }
+  private subscribers = [];
 
   ngOnDestroy() {
-    // unregister tab
+    this.subscribers.forEach( subscriber => subscriber.unsubscribe());
   }
 
   ngAfterContentInit() {
+    this.title.first.onHeaderClick.subscribe(
+      () => {
+        this.onActivateTab.emit(this);
+      }
+    );
     this.initContent();
     this.initTitle();
   }
 
   initTitle() {
-    this.title.first.onHeaderClick.subscribe(
-      () => {
-        this.onTitleClick();
-      }
-    );
+    this.title.first.tabIsActive = this.isActive;
   }
 
   initContent() {
