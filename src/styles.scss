@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    font-family: nunito, sans-serif;
+    font-size: 1.3rem;
+}
+
+tab, tabs {
+    display: block;
+}
+tabs {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto 0;
+    position: relative;
+}
+
+tab-title {
+    height: 4rem;
+    float: left;
+    background: #445;
+    min-width: 60px;
+    text-align: center;
+    margin-right: 3px;
+    border-radius: 5px 5px 0 0;
+    transition: all .5s ease;
+}
+
+tab-content {
+    background: #8AA9B8;
+    width: 100%;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    font-size: 1.2rem;
+    font-family: carme, sans-serif;
+    color: #fff;
+    line-height: 1.2;
+    z-index: 5;
+    // opacity:0;
+    border-radius: 0 5px 5px;
+    transition: all 1s ease;
+}
